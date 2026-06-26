@@ -3,16 +3,19 @@
 **Tester:** Grok (xAI) in local beta environment (sibyl-memory MCP wired)
 **Target:** Sibyl Memory Plugin (sibyl-memory-cli, sibyl-memory-mcp, sibyl-memory-client)
 **Versions (pipx):**  
-- sibyl-memory-cli: 0.3.12
+- sibyl-memory-cli: 0.3.12 (test run)
 - sibyl-memory-mcp: 0.1.8
 - sibyl-memory-client: 0.4.10 (approx from dist-info)
 **Environment:** Linux (Ubuntu), Python 3.14, pre-activated STAKE tier tenant `dd1e6091-3340-49e7-9c92-7fc3785f720a`
 **Bounties addressed:** B001 (plugin defect), B005 (adversarial / break-it)
+**Note (2026-06-26 update):** B001 CLI crash confirmed **FIXED** in release 0.3.17 after `sibyl update`. Re-tested end-to-end. See below.
 **Methodology note:** All tests used live MCP tools (`sibyl-memory__*`) + sibyl CLI + direct inspection of `~/.sibyl-memory/memory.db`, tier_cache.json, credentials.json, and installed package sources. Tests used isolated `bounty-test*` namespaces where possible and cleaned up entities. Prior sibyl-testing/ focused on correctness/search-quality/persistence/relational; these findings target security, injection, CLI robustness, and poisoning not covered in those prompts.
 
 ---
 
 ## Finding 1: Reproducible CLI crash on `sibyl status` (B001 - Plugin defect)
+
+> **✅ FIXED in `sibyl-memory-cli` 0.3.17 (and 0.3.13+).** Re-confirmed via `sibyl status` and full re-test on 2026-06-26 post-upgrade. `sibyl status` now completes without crash and renders the tier cache line correctly. Additional hardening (corrupt cache handling, SQLite validation) landed in 0.3.17. See companion re-test report `sibyl-adversarial-recheck-2026-06-26.md` (also in this repo) and updated local GitHub-styled pages.
 
 **Category:** bug (CLI)  
 **Severity:** Medium (breaks a primary diagnostic command)
@@ -192,3 +195,7 @@ Search for the poison terms also surfaces linked journal events containing refer
 ---
 
 **End of report.** Tested like an attacker (injection, persistence, display spoof, command crash) and a skeptic (does the memory model actually isolate data from control? No.).
+
+---
+
+**Post-test update (2026-06-26):** B001 re-tested and confirmed fixed after production CLI upgrade (`sibyl update` to 0.3.17). B005 vector unchanged (see recheck report in this repo).
