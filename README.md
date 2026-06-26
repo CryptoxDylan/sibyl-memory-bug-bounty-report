@@ -13,8 +13,8 @@
 - **[sibyl-bounty-report.html](sibyl-bounty-report.html)** — Styled HTML version (easy for Discord)
 
 **Findings:**
-- B001: CLI crash on `sibyl status`
-- B005: Memory poisoning / prompt injection vector
+- **B001: CLI crash on `sibyl status`** — **FIXED** in `sibyl-memory-cli` 0.3.17 (re-confirmed 2026-06-26 after `sibyl update`). See updated report for details.
+- **B005: Memory poisoning / prompt injection vector** — Still present (architectural).
 
 #### B003 (Independent Memory Benchmark)
 - **[sibyl-longmemeval-benchmark-report.md](sibyl-longmemeval-benchmark-report.md)** — Full LongMemEval Oracle benchmark (500 questions)
