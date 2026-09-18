@@ -57,7 +57,7 @@ Observed on this run: `session_token` == `bearer_token` == the pairing **session
 
 | Step | Result |
 |---|---|
-| Session A email-bind | HTTP 200. `account_id=b6d6010a-fbcd-4989-89a8-2eee3f08ab0d`, tier `free` |
+| Session A email-bind | HTTP 200. `account_id=PLACE_HOLDER`, tier `free` |
 | Session B email-bind (same email) | HTTP 200. **Same** `account_id`. **Second** live token |
 | Both tokens → `POST /access` | **200** (`ok`, `session_verified: true`) |
 | Both tokens → `GET /devices` | **200**, **2** devices, both `browser-email-pairing` / `email-pairing`. Each token sees itself as `is_this_device` |
