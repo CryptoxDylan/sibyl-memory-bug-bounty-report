@@ -164,6 +164,6 @@ mailbox ownership          ──►  never checked
 
 ## Artifacts
 
-- Account under test: `b6d6010a-fbcd-4989-89a8-2eee3f08ab0d` (free, email-bound).
+- Account under test: `` (free, email-bound).
 - Test device labels: `browser-email-pairing` × 2, both revoked from the device list.
 - Tokens redacted; not persisted after logout.
